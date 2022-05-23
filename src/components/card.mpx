@@ -1,0 +1,168 @@
+<template>
+  <view>
+    <view>
+      <view class="container">
+        <view class="page-body">
+          <view class="page-section page-section-spacing swiper">
+            <swiper
+              autoplay="{{autoplay}}"
+              interval="{{interval}}"
+              duration="{{duration}}"
+              style="height:230px"
+            >
+              <block wx:for="{{userData}}" wx:key="*this">
+                <swiper-item>
+                  <view class="swiper-item">
+                    <view class="item-outer">
+                        <!-- 代驾用户等级 -->
+                        <view class="user-grade  {{item.name}}">
+                            <view class="">
+                                <view>{{item.userName}}</view>
+                                <view>{{item.description}}</view>
+                            </view>
+                            <view class="">
+                                勋章
+                            </view>
+                        </view>
+                        <!-- 用户福利 -->
+                        <view class="user-present">
+                            <view class="present-item">
+                                <view>
+                                  <image src="../image/icon-lock.png" class="image-icon"></image>
+                                </view>
+                                <view class="text-siler" bindtap="conName">每月券包</view>
+                            </view>
+                            <view class="present-item">
+                              <view>
+                                  <image src="../image/icon-lock.png" class="image-icon" ></image>
+                              </view>
+                              <view class="text-siler" bindtap="handleTapInline(name)">免费等候</view>
+                            </view>
+                            <view class="present-item">
+                              <view>
+                                  <image src="../image/icon-lock.png" class="image-icon" ></image>
+                              </view>
+                              <view class="text-siler">兑换好礼</view>
+                            </view>
+                            <view class="present-item">
+                              <view>
+                                  <image src="../image/icon-lock.png" class="image-icon" ></image>
+                              </view>
+                              <view class="text-siler">帮人免单</view>
+                            </view>
+                        </view>
+                    </view>
+                  </view>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      userData: [
+        {
+          userName: '代驾普通用户',
+          description: '您近6个月已代驾0次,已升级为普通用户',
+          name: 'demo1'
+        },
+        {
+          userName: '代驾银卡会员',
+          description: '近6个月代驾6次以上',
+          name: 'demo2'
+        },
+        {
+          userName: '代驾金卡会员',
+          description: '近6个月代驾12次以上',
+          name: 'demo3'
+        },
+        {
+          userName: '代驾白金会员',
+          description: '近6个月代驾24次以上',
+          name: 'demo4'
+        },
+        {
+          userName: '代驾至尊会员',
+          description: '近6个月至尊订单数90单及以上',
+          name: 'demo5'
+        }
+      ],
+      vertical: false,
+      autoplay: false,
+      interval: 2000,
+      duration: 500,
+      name: 'dwy'
+    },
+    methods: {
+      conName (e) {
+        console.log(e, 'e')
+      },
+      handleTapInline (name) {
+        console.log(name, 'name')
+      }
+    }
+  })
+</script>
+
+<style lang="less">
+  .item-outer {
+    background-color: cornsilk;
+    border-radius: 10px;
+    margin: 10px 17px;
+  }
+  .user-grade {
+    height: 100px;
+    display: flex;
+    // background-color: rgb(238, 238, 236);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .user-present {
+    height: 95px;
+    display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(243, 189, 189);
+  }
+  .present-item{
+      color: rgb(93, 89, 89);
+      font-size: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .image-icon{
+        width: 35px;
+        height: 35px;
+        padding: 15px 10px 0px 10px;
+  }
+  .text-siler{
+    font-size: 13px;
+    color: rgb(127, 124, 124);
+  }
+  .demo1 {
+    background-color: silver;
+  }
+  .demo2 {
+    background-color: rgb(160, 160, 211);
+  }
+  .demo3 {
+    background-color: gold;
+  }
+  .demo4 {
+    background-color: purple;
+  }
+  .demo5 {
+    background-color: green;
+  }
+</style>

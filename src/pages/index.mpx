@@ -1,0 +1,84 @@
+<template>
+  <view class="page-outer">
+    <view class="item-user">
+      <view class="user-name">
+        尊敬的代驾用户
+      </view>
+      <view class="item-outer">
+        <view class="address-card">
+        </view>
+        <view class="user-present">
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+  import store from '../store/count'
+
+  createPage({
+    data: {
+      cou: 0
+    },
+    onLoad () {},
+    onShow () {
+      // this.cou = store.state.count
+      console.log(store.state.count, 'store.state.count')
+    },
+    methods: {
+      conName (e) {
+        console.log(e)
+        wx.navigateTo({
+          url: '/pages/song/songsList'
+        })
+      }
+    }
+  })
+</script>
+
+
+<script name="json">
+  module.exports = {
+    navigationBarTitleText: '滴滴代驾',
+    usingComponents: {
+      list: '../components/list',
+      test: '../components/test',
+      card: '../components/card'
+    }
+  }
+</script>
+
+<style lang="less">
+  .page-outer{
+    background-color: rgb(250, 252, 251)
+  }
+  .item-user{
+    margin: 200rpx 34rpx;
+    background-color: rgb(192, 200, 75);
+    border-radius: 20rpx;
+  }
+  .user-name{
+    height: 90rpx;
+  }
+  .item-outer {
+    background-color: rgb(144, 52, 52);
+    border-radius: 20rpx;
+    box-shadow: 0rpx 0rpx 20rpx #a7a5a5;
+  }
+  .address-card {
+    height: 200rpx;
+    display: flex;
+    // background-color: rgb(238, 238, 236);
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+  }
+  .user-present {
+    height: 190rpx;
+    display: flex;
+    border-bottom-left-radius: 20rpx;
+    border-bottom-right-radius: 20rpx;
+    background-color: rgb(243, 189, 189);
+  }
+</style>

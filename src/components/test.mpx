@@ -1,0 +1,60 @@
+<template>
+  <view>
+    <!--原生小程序语法，通过dataset进行传参-->
+    <button data-name="a" bindtap="handleTap">a</button>
+    <!--Mpx增强语法，模板内联传参，方便简洁-->
+    <button bindtap="handleTapInline('b')">b</button>
+    <!--参数支持传递字面量和组件数据-->
+    <button bindtap="handleTapInline(name)"></button>
+    <!--参数同样支持传递for作用域下的item/index-->
+    <button wx:for="{{names}}" bindtap="handleTapInline(item)">{{item}}</button>
+    <!--需要使用原始事件对象时可以传递$event特殊关键字-->
+    <button bindtap="handleTapInlineWithEvent('g', $event)">g</button>
+    <view style="background-color:purple">
+      <input type="text" wx:model="{{message}}" />
+      <!--view中的文案会随着用户对输入框进行输入而实时更新-->
+    <view style="background-color:orange">{{message}}</view>
+    <view>
+      <!--原生组件picker中没有input事件，通过wx:model-event指令将双向绑定监听事件改为change事件-->
+      <!-- <picker mode="selector" range="{{countryRange}}" wx:model="{{country}}" wx:model-event="change">
+        <view class="picker">
+          当前选择: {{country}}
+        </view>
+      </picker> -->
+      <!--通过wx:model-event和wx:model-prop将该自定义组件的双向绑定监听事件和数据属性修改为customInput/customValue-->
+      <custom-input wx:model="{{message}}" wx:model-event="customInput" wx:model-prop="customValue"/>
+      <view>{{message}}</view>
+    </view>
+</view>
+  </view>
+</template>
+
+<script>
+  import { createComponent } from '@mpxjs/core'
+
+  createComponent({
+    data: {
+      name: 'c',
+      names: ['d', 'e', 'f'],
+      message: '',
+      country: 0,
+      countryRange: [1, 2, 3]
+    },
+    methods: {
+      handleTap (e) {
+        console.log('name:', e.target.dataset.name)
+      },
+      // 直接通过参数获取数据，直观方便
+      handleTapInline (name) {
+        console.log('name:', name)
+      },
+      handleTapInlineWithEvent (name, e) {
+        console.log('name:', name)
+        console.log('event:', e)
+      },
+      change () {
+        console.log(111)
+      }
+    }
+  })
+</script>

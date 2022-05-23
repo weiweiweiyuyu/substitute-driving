@@ -1,0 +1,47 @@
+<script>
+  import mpx, { createApp } from '@mpxjs/core'
+  import apiProxy from '@mpxjs/api-proxy'
+
+  mpx.use(apiProxy, { usePromise: true })
+
+  createApp({
+    onLaunch () {
+    }
+  })
+</script>
+
+<style lang="less">
+  @font-face {
+    font-family: 'iconfont';  /* project id 3423304 */
+    src: url('');
+    src: url('?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_3423304_je095seoc8j.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_3423304_je095seoc8j.woff') format('woff'),
+    url('//at.alicdn.com/t/font_3423304_je095seoc8j.ttf') format('truetype'),
+    url('#iconfont') format('svg');
+  }
+  .iconfont {
+		font-family: 'iconfont';
+		font-size: 16px;
+	}
+</style>
+
+<script type="application/json">
+  {
+    "pages": [
+      "./pages/index",
+      "./pages/song/songsList"
+    ]
+  }
+</script>
+
+<!--也可以通过以下形式用js输出json，便于书写注释和使用条件编译-->
+
+<!--<script name="json">-->
+<!--  // 可以写注释，通过defs注入的常量做一些判断之类的操作-->
+<!--  module.exports = {-->
+<!--    pages: [-->
+<!--      './pages/index'-->
+<!--    ]-->
+<!--  }-->
+<!--</script>-->
