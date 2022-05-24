@@ -1,0 +1,43 @@
+<template>
+    <view>
+      <!-- 输入框 -->
+      <view>
+          <view></view>
+          <view></view>
+          <view></view>
+      </view>
+      <!-- 滑动地点选择 -->
+      <view>
+          <!-- 家，公司，编辑 -->
+          <view></view>
+          <!-- 滑动地点 -->
+          <scroll-view scroll-y="true">
+
+          </scroll-view>
+      </view>
+    </view>
+</template>
+
+<style lang="less">
+</style>
+
+<script>
+import { createPage } from '@mpxjs/core'
+createPage({
+  data: {
+
+  },
+  onShow () {
+
+  },
+  methods: {
+
+  }
+})
+</script>
+
+<script name="json">
+    module.exports = {
+      navigationBarTitleText: '选择地点'
+    }
+</script>

@@ -1,16 +1,84 @@
 <template>
   <view class="page-outer">
-    <view class="item-user">
-      <view class="user-name">
-        尊敬的代驾用户
+    <!-- 一、目的地选择 -->
+    <view class="top-section">
+      <view class="safe-center">
+      <text class="iconfont icon-anquan"></text>
+      <view>安全中心</view>
       </view>
-      <view class="item-outer">
-        <view class="address-card">
+      <view class="item-user">
+        <view class="user-name">
+          <text class="iconfont icon-xingxing-copy"></text>
+          <view class="user-font">尊敬的代驾用户</view>
+          <text class="iconfont icon-jiantouyou"></text>
         </view>
-        <view class="user-present">
+        <view class="item-outer">
+          <view class="address-card">
+            <view class="card-top">
+              <text class="iconfont icon-dian"></text>
+              <view class="address-time">
+                <view>从<span>{{startAddress}}</span>出发</view>
+                <view class="time-quick">司机最快{{time}}分钟到达</view>
+              </view>
+              <text class="iconfont icon-jiantouyou"></text>
+            </view>
+          </view>
+          <view class="direction-add">
+            <view class="direction-top" bindtap="goToAddress">
+              <text class="iconfont icon-dian dir-orange"></text>
+              <view class="dir-input">输入代驾目的地</view>
+              <text class="iconfont icon-jiantouyou"></text>
+            </view>
+            <!-- 横线 -->
+            <view class="line-cen"></view>
+            <view class="dir-bottom">
+              <!-- 家，设置并发单 -->
+              <view class="home-set">
+                <text class="iconfont icon-fangzi"></text>
+                <span>家 | 设置并发单</span>
+              </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
+    <!-- 二、多种服务 -->
+    <view class="middle-section">
+      <scroll-view scroll-x="true" show-scrollbar="true" style="white-space:nowrap;">
+        <ul>
+          <li class="item-sec">
+            <image src="../image/song.png"/>
+            <view>车主服务</view>
+          </li>
+          <li class="item-sec">
+            <image src="../image/song.png"/>
+            <view>我的会员</view>
+          </li>
+          <li class="item-sec">
+            <image src="../image/song.png"/>
+            <view>代叫代驾</view>
+          </li>
+          <li class="item-sec">
+            <image src="../image/song.png"/>
+            <view>省钱中心</view>
+          </li>
+          <li class="item-sec">
+            <image src="../image/song.png"/>
+            <view>成为司机</view>
+          </li>
+          <li class="item-sec">
+            <image src="../image/song.png"/>
+            <view>超值会员</view>
+          </li>
+        </ul>
+      </scroll-view>
+    </view>
+    <!-- 三、轮播图展示 -->
+    <view>
+      <card></card>
+    </view>
+    <!-- 四、声明 -->
+    <view class="person-info">·个人信息处理规则、平台规则及资源、客服信息·</view>
   </view>
 </template>
 
@@ -20,11 +88,22 @@
 
   createPage({
     data: {
-      cou: 0
+      cou: 0,
+      startName: '河南科技学院信息工程学院',
+      time: 15
+    },
+    computed: {
+      startAddress () {
+        if (this.startName.length > 9) {
+          return this.startName.slice(0, 9) + '...'
+        }
+        return this.startName
+      }
     },
     onLoad () {},
     onShow () {
       // this.cou = store.state.count
+      this.startName = '河南科技学院信息工程学院'
       console.log(store.state.count, 'store.state.count')
     },
     methods: {
@@ -32,6 +111,11 @@
         console.log(e)
         wx.navigateTo({
           url: '/pages/song/songsList'
+        })
+      },
+      goToAddress () {
+        wx.navigateTo({
+          url: '/pages/select-address/address'
         })
       }
     }
@@ -51,34 +135,151 @@
 </script>
 
 <style lang="less">
-  .page-outer{
-    background-color: rgb(250, 252, 251)
+  .top-section{
+    padding-top: 140rpx;
+    border-bottom-right-radius: 23px;
+    border-bottom-left-radius: 23px;
+    background-color: #73efe6;
+  }
+  .icon-xingxing-copy{
+    color: #13227a;
+  }
+  .dir-orange{
+    color: rgb(249, 106, 67) !important
+  }
+  .icon-fangzi{
+    margin-right: 5rpx;
+    font-size: 26rpx;
+  }
+  .icon-anquan{
+    color: #1296db;
+    font-size: 36rpx;
+    margin: 0rpx 18rpx;
+  }
+  .icon-dian{
+    color: rgb(36, 202, 190);
+    font-size: 54rpx;
+    font-weight: 600;
+  }
+  // .page-outer{
+  //   // background-color: #73efe6
+  // }
+  .address-time span{
+    color: rgb(36, 202, 190)
+  }
+  
+  .safe-center{
+    width: 197rpx;
+    height: 73rpx;
+    border-radius: 56rpx;
+    display: flex;
+    align-items: center;
+    margin: 0rpx 34rpx;
+    background-color: white;
+    font-size: 27rpx;
+    font-weight: 600;
   }
   .item-user{
-    margin: 200rpx 34rpx;
-    background-color: rgb(192, 200, 75);
+    margin: 20rpx 34rpx 0rpx 34rpx;
+    background-color: rgb(229, 240, 246);
     border-radius: 20rpx;
   }
   .user-name{
     height: 90rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 26rpx;
+  }
+  .user-font{
+    margin-left: 10rpx;
+    margin-right: 8rpx;
+    font-size: 28rpx;
+    font-weight: 600;
+  }
+  .icon-jiantouyou{
+    padding-top: 2rpx;
+    font-size: 20rpx;
+    font-weight: 600;
+    line-height: 52rpx;
   }
   .item-outer {
-    background-color: rgb(144, 52, 52);
+    background-color: white;
     border-radius: 20rpx;
     box-shadow: 0rpx 0rpx 20rpx #a7a5a5;
+    padding-bottom: 34rpx;
   }
   .address-card {
-    height: 200rpx;
-    display: flex;
+    // height: 200rpx;
     // background-color: rgb(238, 238, 236);
     border-top-left-radius: 20rpx;
     border-top-right-radius: 20rpx;
   }
-  .user-present {
-    height: 190rpx;
+  .card-top{
     display: flex;
-    border-bottom-left-radius: 20rpx;
-    border-bottom-right-radius: 20rpx;
-    background-color: rgb(243, 189, 189);
+    padding: 34rpx 32rpx 0rpx 32rpx;
+    font-weight: 600;
+    justify-content: space-between;
+  }
+  .address-time{
+    width: 534rpx;
+  }
+  .time-quick{
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    color: rgb(134, 134, 134);
+  }
+  .direction-add {
+    height: 190rpx;
+    margin: 18rpx 25rpx 0rpx 25rpx;
+    border-radius: 20rpx;
+    background-color: rgb(245, 245, 245);
+  }
+  .direction-top{
+    padding: 20rpx 10rpx 0rpx 10rpx;
+    display: flex;
+    justify-content: space-between;
+  }
+  .dir-input{
+    display: flex;
+    width: 528rpx;
+    font-weight: 600;
+    align-items: center;
+  }
+  .line-cen{
+      height: 1rpx;
+      background-color: #d8d7d7;
+      margin: 13rpx 17rpx 10rpx 65rpx;
+  }
+  .home-set{
+    border: 1px #a09c9c solid;
+    border-radius: 8px;
+    margin: 22rpx 0rpx;
+    width: 210rpx;
+    background-color: white;
+    padding: 12rpx;
+    font-size: 26rpx;
+    color:#a09c9c;
+  }
+  .dir-bottom{
+    margin-left: 30rpx;
+  }
+  .person-info{
+    color: #85a1c4;
+    text-align: center;
+    font-weight: 600;
+    font-size: 26rpx;
+  }
+  .middle-section ul{
+    display: flex;
+    font-size: 27rpx;
+    color: #a09c9c;
+  }
+  .item-sec{
+    padding: 22rpx;
+    width: 120rpx;
+  }
+  .item-sec image{
+    width: 100rpx;
+    height: 100rpx;
   }
 </style>

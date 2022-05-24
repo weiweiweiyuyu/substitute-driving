@@ -1,4 +1,4 @@
-let { mpxLoaderConf } = require('../config/index')
+const { mpxLoaderConf } = require('../config/index')
 const MpxWebpackPlugin = require('@mpxjs/webpack-plugin')
 const { resolve, getConf } = require('./utils')
 
@@ -88,8 +88,15 @@ module.exports = function getRules (options) {
       {
         test: /\.less$/,
         use: [
-            'css-loader',
-            'less-loader'
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'css-loader'
+          // 'scss-loader'
         ]
       },
       {
@@ -111,6 +118,13 @@ module.exports = function getRules (options) {
         use: [
           MpxWebpackPlugin.wxssLoader(),
           'less-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MpxWebpackPlugin.wxssLoader()
+          // 'scss-loader'
         ]
       },
       {

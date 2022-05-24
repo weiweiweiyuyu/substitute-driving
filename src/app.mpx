@@ -10,27 +10,17 @@
   })
 </script>
 
-<style lang="less">
-  @font-face {
-    font-family: 'iconfont';  /* project id 3423304 */
-    src: url('');
-    src: url('?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_3423304_je095seoc8j.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_3423304_je095seoc8j.woff') format('woff'),
-    url('//at.alicdn.com/t/font_3423304_je095seoc8j.ttf') format('truetype'),
-    url('#iconfont') format('svg');
-  }
-  .iconfont {
-		font-family: 'iconfont';
-		font-size: 16px;
-	}
+<style lang="scss">
+  @import url(./style/icon.wxss);
+	/*每个页面公共css */
 </style>
 
 <script type="application/json">
   {
     "pages": [
       "./pages/index",
-      "./pages/song/songsList"
+      "./pages/song/songsList",
+      "./pages/select-address/address"
     ]
   }
 </script>
