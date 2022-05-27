@@ -18,15 +18,15 @@
                 <view class="sec-edit">
                     <text class="iconfont icon-fangzi"></text>
                     <view>
-                        <view>家</view>
-                        <view>设置家庭地址</view>
+                        <view class="home-text">家</view>
+                        <view class="home-address-text">设置家庭地址</view>
                     </view>
                 </view>
                 <view class="sec-edit">
                     <text class="iconfont icon-dingwei"></text>
                     <view>
-                        <view>公司</view>
-                        <view>设置公司地址</view>
+                        <view class="home-text">公司</view>
+                        <view class="home-address-text">设置公司地址</view>
                     </view>
                 </view>
                 <view class="edit-last">
@@ -36,8 +36,9 @@
             </view>
             <!-- 滑动地点 -->
             <view>
-                <view wx:for="{{songsList}}" wx:key="item.id" bindtap="changeCou">
-                    {{item.name}}
+                <view wx:for="{{songsList}}" wx:key="item.id" bindtap="selectAddress(item.name)" class="address-dian">
+                    <text class="iconfont icon-zhandian"></text>
+                    <span>{{item.name}}</span>
                 </view>
             </view>
           </scroll-view>
@@ -65,8 +66,8 @@ createPage({
         console.error(err)
       })
     },
-    changeCou () {
-      console.log(111)
+    selectAddress (name) {
+      console.log(name, '地点名称')
     },
     goToPay () {
       wx.navigateTo({
@@ -122,14 +123,46 @@ createPage({
         .scroll-top{
             display: flex;
             justify-content: space-around;
-            border-bottom: 1px #a7a5a5 solid;
+            border-bottom: 1px #d5d4d4 solid;
             .sec-edit{
                 display: flex;
-                border-right: 1px #d6d4d4 solid;
+                padding: 11rpx 0rpx;
+                border-right: 1px #d5d4d4 solid;
                 flex:2;
+                .icon-dingwei,.icon-fangzi{
+                    color: #d5d4d4;
+                    font-size: 30rpx;
+                    margin-right: 20rpx;
+                    line-height: 40px;
+                }
+                .home-text{
+                    font-weight: 600;
+                }
+                .home-address-text{
+                    font-size: 28rpx;
+                    color: #888383;
+                }
             }
             .edit-last{
+                flex-direction: column;
+                display: flex;
+                font-size: 28rpx;
+                align-items: center;
+                justify-content: center;
                 flex: 1;
+            }
+        }
+        .address-dian{
+            display: flex;
+            height: 90rpx;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 12rpx 27rpx;
+            border-bottom: 1px #d5d4d4 solid;
+            .icon-zhandian{
+                color: #d6d4d4;
+                font-size: 19rpx;
+                margin-right: 11rpx;
             }
         }
     }
