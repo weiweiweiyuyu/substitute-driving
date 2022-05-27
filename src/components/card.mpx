@@ -21,7 +21,7 @@
                                 <view>{{item.description}}</view>
                             </view>
                             <view class="">
-                                勋章
+                                
                             </view>
                         </view>
                         <!-- 用户福利 -->

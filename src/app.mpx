@@ -20,7 +20,8 @@
     "pages": [
       "./pages/index",
       "./pages/song/songsList",
-      "./pages/select-address/address"
+      "./pages/select-address/address",
+      "./pages/prepare-pay/index"
     ]
   }
 </script>
