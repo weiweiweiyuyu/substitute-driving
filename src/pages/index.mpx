@@ -3,8 +3,8 @@
     <!-- 一、目的地选择 -->
     <view class="top-section">
       <view class="safe-center">
-      <text class="iconfont icon-anquan"></text>
-      <view>安全中心</view>
+        <text class="iconfont icon-anquan"></text>
+        <view>安全中心</view>
       </view>
       <view class="item-user">
         <view class="user-name">
@@ -140,6 +140,101 @@
     border-bottom-right-radius: 23px;
     border-bottom-left-radius: 23px;
     background-color: #73efe6;
+    .safe-center{
+      width: 197rpx;
+      height: 73rpx;
+      border-radius: 56rpx;
+      display: flex;
+      align-items: center;
+      margin: 0rpx 34rpx;
+      background-color: white;
+      font-size: 27rpx;
+      font-weight: 600;
+    }
+    .item-user{
+      margin: 20rpx 34rpx 0rpx 34rpx;
+      background-color: rgb(229, 240, 246);
+      border-radius: 20rpx;
+      .item-outer {
+      background-color: white;
+        border-radius: 20rpx;
+        box-shadow: 0rpx 0rpx 20rpx #a7a5a5;
+        padding-bottom: 34rpx;
+        .address-card {
+          // height: 200rpx;
+          // background-color: rgb(238, 238, 236);
+          border-top-left-radius: 20rpx;
+          border-top-right-radius: 20rpx;
+          .card-top{
+            display: flex;
+            padding: 34rpx 32rpx 0rpx 32rpx;
+            font-weight: 600;
+            justify-content: space-between;
+            .address-time{
+              width: 534rpx;
+              .time-quick{
+                margin-top: 8rpx;
+                font-size: 24rpx;
+                color: rgb(134, 134, 134);
+              }
+            }
+          }
+        }
+        .direction-add {
+          height: 190rpx;
+          margin: 18rpx 25rpx 0rpx 25rpx;
+          border-radius: 20rpx;
+          background-color: rgb(245, 245, 245);
+          .direction-top{
+            padding: 20rpx 10rpx 0rpx 10rpx;
+            display: flex;
+            justify-content: space-between;
+            .dir-input{
+              display: flex;
+              width: 528rpx;
+              font-weight: 600;
+              align-items: center;
+            }
+          }
+          .line-cen{
+              height: 1rpx;
+              background-color: #d8d7d7;
+              margin: 13rpx 17rpx 10rpx 65rpx;
+          }
+          .dir-bottom{
+            margin-left: 30rpx;
+            .home-set{
+              border: 1px #a09c9c solid;
+              border-radius: 8px;
+              margin: 22rpx 0rpx;
+              width: 210rpx;
+              background-color: white;
+              padding: 12rpx;
+              font-size: 26rpx;
+              color:#a09c9c;
+            }
+          }
+        }
+      }
+      .user-name{
+        height: 90rpx;
+        display: flex;
+        align-items: center;
+        padding-left: 26rpx;
+          .user-font{
+            margin-left: 10rpx;
+            margin-right: 8rpx;
+            font-size: 28rpx;
+            font-weight: 600;
+          }
+          .icon-jiantouyou{
+            padding-top: 2rpx;
+            font-size: 20rpx;
+            font-weight: 600;
+            line-height: 52rpx;
+          }
+      }
+    }
   }
   .icon-xingxing-copy{
     color: #13227a;
@@ -163,102 +258,6 @@
   }
   .address-time span{
     color: rgb(36, 202, 190)
-  }
-  
-  .safe-center{
-    width: 197rpx;
-    height: 73rpx;
-    border-radius: 56rpx;
-    display: flex;
-    align-items: center;
-    margin: 0rpx 34rpx;
-    background-color: white;
-    font-size: 27rpx;
-    font-weight: 600;
-  }
-  .item-user{
-    margin: 20rpx 34rpx 0rpx 34rpx;
-    background-color: rgb(229, 240, 246);
-    border-radius: 20rpx;
-  }
-  .user-name{
-    height: 90rpx;
-    display: flex;
-    align-items: center;
-    padding-left: 26rpx;
-  }
-  .user-font{
-    margin-left: 10rpx;
-    margin-right: 8rpx;
-    font-size: 28rpx;
-    font-weight: 600;
-  }
-  .icon-jiantouyou{
-    padding-top: 2rpx;
-    font-size: 20rpx;
-    font-weight: 600;
-    line-height: 52rpx;
-  }
-  .item-outer {
-    background-color: white;
-    border-radius: 20rpx;
-    box-shadow: 0rpx 0rpx 20rpx #a7a5a5;
-    padding-bottom: 34rpx;
-  }
-  .address-card {
-    // height: 200rpx;
-    // background-color: rgb(238, 238, 236);
-    border-top-left-radius: 20rpx;
-    border-top-right-radius: 20rpx;
-  }
-  .card-top{
-    display: flex;
-    padding: 34rpx 32rpx 0rpx 32rpx;
-    font-weight: 600;
-    justify-content: space-between;
-  }
-  .address-time{
-    width: 534rpx;
-  }
-  .time-quick{
-    margin-top: 8rpx;
-    font-size: 24rpx;
-    color: rgb(134, 134, 134);
-  }
-  .direction-add {
-    height: 190rpx;
-    margin: 18rpx 25rpx 0rpx 25rpx;
-    border-radius: 20rpx;
-    background-color: rgb(245, 245, 245);
-  }
-  .direction-top{
-    padding: 20rpx 10rpx 0rpx 10rpx;
-    display: flex;
-    justify-content: space-between;
-  }
-  .dir-input{
-    display: flex;
-    width: 528rpx;
-    font-weight: 600;
-    align-items: center;
-  }
-  .line-cen{
-      height: 1rpx;
-      background-color: #d8d7d7;
-      margin: 13rpx 17rpx 10rpx 65rpx;
-  }
-  .home-set{
-    border: 1px #a09c9c solid;
-    border-radius: 8px;
-    margin: 22rpx 0rpx;
-    width: 210rpx;
-    background-color: white;
-    padding: 12rpx;
-    font-size: 26rpx;
-    color:#a09c9c;
-  }
-  .dir-bottom{
-    margin-left: 30rpx;
   }
   .person-info{
     color: #85a1c4;
