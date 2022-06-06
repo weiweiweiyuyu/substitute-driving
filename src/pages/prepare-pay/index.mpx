@@ -1,0 +1,149 @@
+<template>
+    <view>
+        <map class="map" latitude="40.040415" 
+            enable-overlooking="{{true}}" 
+            longitude="116.273511" scale="17" enable-3D="{{is3D}}" 
+            enable-traffic="{{isRealTraffic}}" enable-poi="true" enable-rotate
+            style="width: 100%; height: 400px">
+        </map>
+        <view class="item-outer">
+            <view class="pre-pay">
+                <view class="pay-cen">
+                    <view class="pay-mony">
+                        <text class="iconfont icon-info-circle"></text>
+                        <view>预估<span>38</span>元</view>
+                    </view>
+                    <view class="reward-save">券已抵扣5元</view>
+                </view>
+            </view>
+            <view class="direction-add">
+                <view class="direction-top">
+                    优惠券
+                </view>
+                <view class="direction-bottom">
+                    <label class="radio">
+                        <radio value="r1" checked="{{check}}" color="#fe634e" bindtap="radioChange"/>选中
+                    </label>
+                </view>
+            </view>
+        </view>
+        <view class="item-tip" bindtap="replaceCall">
+            代人叫代驾 > 
+        </view>
+        <view class="item-button">
+            <button>立即呼叫代驾</button>
+        </view>
+    </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      isRealTraffic: true,
+      check: true
+    },
+    onShow () {
+      console.log('daijia_prepare_pay_sw')
+    },
+    methods: {
+      radioChange (e) {
+        console.log(e)
+        console.log('radio发生change事件，携带value值为：', e.detail.value)
+        this.setData({
+          check: !this.data.check
+        })
+        console.log('用户打勾的是 ', this.data.check)
+        console.log('daijia_save_money_click')
+      },
+      replaceCall () {
+        console.log('daijia_replace_call_click')
+      }
+    }
+  })
+</script>
+
+<script name="json">
+    module.exports = {
+      navigationBarTitleText: '滴滴代驾'
+    }
+</script>
+
+<style lang="less" scoped>
+    radio .wx-radio-input{
+        width: 32rpx;
+        height: 32rpx;
+    }
+  .item-outer {
+    width: 695rpx;
+    position: absolute;
+    top: 324px;
+    left: 29rpx;
+    background-color: white;
+    border-radius: 20rpx;
+    box-shadow: 0rpx 0rpx 20rpx #a7a5a5;
+    padding-bottom: 34rpx;
+        .pre-pay {
+            flex-direction: column;
+            display: flex;
+            height: 160rpx;
+            align-items: center;
+            font-size: 26rpx;
+            .pay-cen{
+                flex-direction: column;
+                display: flex;
+                align-items: center;
+                .pay-mony{
+                    font-weight: 600;
+                    align-items: center;
+                    display: flex;
+                    .icon-info-circle{
+                        height: 30rpx;
+                        color: #d8d4d4;
+                        font-size: 28rpx;
+                        margin-top: 26rpx;
+                        margin-right: 7rpx;
+                    }
+                    span{
+                        font-size: 54rpx;
+                    }
+                }
+                .reward-save{
+                    color: #989696;
+                    margin-top: 3rpx;
+                }
+            }
+        }
+        .direction-add {
+            height: 190rpx;
+            margin: 18rpx 25rpx 0rpx 25rpx;
+            border-radius: 20rpx;
+            background-color: rgb(254, 249, 245);
+            .direction-top{
+                color: rgb(254, 99, 78);
+                text-align: center;
+            }
+        }
+  }
+  .item-tip{
+    position: absolute;
+    top: 540px;
+    text-align: center;
+    width: 100%;
+    font-size: 27rpx;
+    color: #989696;
+  }
+  .item-button{
+    position: absolute;
+    top: 580px;
+    left: 29rpx;
+    width: 700rpx;
+    margin-bottom: 26rpx;
+    button{
+        border-radius: 50rpx;
+        color: white;
+        background-color:rgb(37, 37, 45);
+    }
+  }
+</style>

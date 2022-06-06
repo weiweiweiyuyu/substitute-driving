@@ -1,0 +1,49 @@
+<template>
+    <view>
+      <view wx:for="{{songsList}}" wx:key="item.id" bindtap="changeCou">
+        {{item.name}}/{{cou}}
+      </view>
+    </view>
+</template>
+
+<style lang="less">
+</style>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+  import { getRequest } from '../../libs/httpUtils'
+  import store from '../../store/count'
+
+  createPage({
+    data: {
+      songsList: [],
+      cou: 0
+    },
+    onShow () {
+      this.getSongsList()
+      this.cou = store.state.count
+      console.log(store.state.count, 'store.state.count')
+    },
+    methods: {
+      getSongsList () {
+        getRequest('/top/song?type=7', {}).then(res => {
+          console.log('gradeList', res.data)
+          this.songsList = res.data
+        }, err => {
+          console.error(err)
+        })
+      },
+      changeCou () {
+        console.log(111)
+        store.commit('increment')
+        this.cou = store.state.count
+      }
+    }
+  })
+</script>
+
+<script name="json">
+    module.exports = {
+      navigationBarTitleText: '热门歌曲'
+    }
+</script>
