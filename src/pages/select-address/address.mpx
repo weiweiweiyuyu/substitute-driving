@@ -55,6 +55,7 @@ createPage({
     cou: 0
   },
   onShow () {
+    console.log('daijia_address_select_page_sw')
     this.getSongsList()
   },
   methods: {

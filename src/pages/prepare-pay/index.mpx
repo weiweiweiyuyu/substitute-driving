@@ -27,7 +27,7 @@
                 </view>
             </view>
         </view>
-        <view class="item-tip">
+        <view class="item-tip" bindtap="replaceCall">
             代人叫代驾 > 
         </view>
         <view class="item-button">
@@ -44,6 +44,9 @@
       isRealTraffic: true,
       check: true
     },
+    onShow () {
+      console.log('daijia_prepare_pay_sw')
+    },
     methods: {
       radioChange (e) {
         console.log(e)
@@ -52,6 +55,10 @@
           check: !this.data.check
         })
         console.log('用户打勾的是 ', this.data.check)
+        console.log('daijia_save_money_click')
+      },
+      replaceCall () {
+        console.log('daijia_replace_call_click')
       }
     }
   })

@@ -107,16 +107,14 @@
       console.log('daijia_home_page_sw')
     },
     methods: {
-      conName (e) {
-        console.log(e)
-        wx.navigateTo({
-          url: '/pages/song/songsList'
-        })
-      },
       goToAddress () {
+        console.log('daijia_end_point_click')
         wx.navigateTo({
           url: '/pages/select-address/address'
         })
+      },
+      changeFun () {
+        console.log('daijia_function_button_list')
       }
     }
   })
